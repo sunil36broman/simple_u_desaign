@@ -28,31 +28,49 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <div className="max-w-6xl mx-auto py-8 px-10 bg-gray-100 rounded-lg shadow-lg">
       <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            id="username"
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
+      <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="grid gap-4">
+        
+
+               <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                  Username
+                  </label>
+                  <input
+                    id="username"
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  
+              </div>
+
+
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                  password
+                  </label>
+                  <input
+                     id="password"
+                     type="password"
+                     value={password}
+                     onChange={(e) => setPassword(e.target.value)}
+                     required
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  
+              </div>
+
+              <div>
+                  
+              {error && <p style={{ color: "red" }}>{error}</p>}
+              </div>
+               <button type="submit">Login</button>
         </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="submit">Login</button>
       </form>
     </div>
   );

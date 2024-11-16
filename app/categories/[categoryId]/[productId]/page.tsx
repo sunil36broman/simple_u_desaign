@@ -23,7 +23,7 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
     redirect(`/login?redirectTo=${encodedRedirectTo}`); // Redirect to login page if not authenticated
   }
   return (
-    <div>
+    <div className="max-w-6xl mx-auto py-8 px-10">
       <h1>product details, please applay for this product</h1>
       <h1>Product ID is {productId} of category's {categoryId}</h1>
       <MultiStepForm />

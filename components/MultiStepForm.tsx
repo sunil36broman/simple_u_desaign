@@ -78,69 +78,184 @@ export default function MultiStepForm() {
 
   return (
     <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
+      <div className="max-w-6xl mx-auto py-8 px-10 bg-gray-100 rounded-lg shadow-lg">
+      <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
         <h2>{formSteps[step]}</h2>
         {isLoading && <label>Loading...</label>}
 
         {/* Step-specific form fields */}
         {step === 0 && (
-          <div>
-            <label>User Information</label>
-            <input {...methods.register("userId")} />
-            <p>{methods.formState.errors.userId?.message ?? ''}</p>
+          <div className="grid gap-4">
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                        User Information
+                  </label>
+                  <input
+                        {...methods.register("userId")}
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="mt-1 text-red-600 text-sm">
+                    {methods.formState.errors.userId?.message ?? ""}
+                  </p>
+              </div>
 
-            <label>ID</label>
-            <input {...methods.register("id")} />
-            <p>{methods.formState.errors.id?.message ?? ''}</p>
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                        User ID
+                  </label>
+                  <input
+                        {...methods.register("id")}
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="mt-1 text-red-600 text-sm">
+                    {methods.formState.errors.id?.message ?? ""}
+                  </p>
+              </div>
 
-            <label>Title</label>
-            <input type="text" {...methods.register("title")} />
-            <p>{methods.formState.errors.title?.message ?? ''}</p>
 
-            <label>Completed</label>
-            <input type="checkbox" {...methods.register("completed")} />
-            <p>{methods.formState.errors.completed?.message ?? ''}</p>
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                        User Title
+                  </label>
+                  <input
+                        {...methods.register("title")}
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="mt-1 text-red-600 text-sm">
+                    {methods.formState.errors.title?.message ?? ""}
+                  </p>
+              </div>
+
+              <div>
+                  <label className="block text-sm font-medium text-gray-700">
+                        User completed
+                  </label>
+                  <input
+                        {...methods.register("completed")}
+                        type="checkbox"
+                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+                  />
+                  <p className="mt-1 text-red-600 text-sm">
+                    {methods.formState.errors.completed?.message ?? ""}
+                  </p>
+              </div>
           </div>
         )}
 
         {step === 1 && (
+          <div className="grid gap-4">
           <div>
-            <label>Nomoni Information</label>
-            <input {...methods.register("userId")} />
-            <p>{methods.formState.errors.userId?.message ?? ''}</p>
-
-            <label>ID</label>
-            <input {...methods.register("id")} />
-            <p>{methods.formState.errors.id?.message ?? ''}</p>
-
-            <label>Title</label>
-            <input type="text" {...methods.register("title")} />
-            <p>{methods.formState.errors.title?.message ?? ''}</p>
-
-            <label>Completed</label>
-            <input type="checkbox" {...methods.register("completed")} />
-            <p>{methods.formState.errors.completed?.message ?? ''}</p>
+              <label className="block text-sm font-medium text-gray-700">
+                    Nomoni Information
+              </label>
+              <input
+                    {...methods.register("userId")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.userId?.message ?? ""}
+              </p>
           </div>
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+                  Nomoni ID
+              </label>
+              <input
+                    {...methods.register("id")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.id?.message ?? ""}
+              </p>
+          </div>
+
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+              Nomoni Title
+              </label>
+              <input
+                    {...methods.register("title")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.title?.message ?? ""}
+              </p>
+          </div>
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+              Nomoni completed
+              </label>
+              <input
+                    {...methods.register("completed")}
+                    type="checkbox"
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.completed?.message ?? ""}
+              </p>
+          </div>
+        </div>
         )}
 
         {step === 2 && (
+          <div className="grid gap-4">
           <div>
-            <label>Address Information</label>
-            <input {...methods.register("userId")} />
-            <p>{methods.formState.errors.userId?.message ?? ''}</p>
-
-            <label>ID</label>
-            <input {...methods.register("id")} />
-            <p>{methods.formState.errors.id?.message ?? ''}</p>
-
-            <label>Title</label>
-            <input type="text" {...methods.register("title")} />
-            <p>{methods.formState.errors.title?.message ?? ''}</p>
-
-            <label>Completed</label>
-            <input type="checkbox" {...methods.register("completed")} />
-            <p>{methods.formState.errors.completed?.message ?? ''}</p>
+              <label className="block text-sm font-medium text-gray-700">
+                    other address
+              </label>
+              <input
+                    {...methods.register("userId")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.userId?.message ?? ""}
+              </p>
           </div>
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+              other ID
+              </label>
+              <input
+                    {...methods.register("id")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.id?.message ?? ""}
+              </p>
+          </div>
+
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+              other Title
+              </label>
+              <input
+                    {...methods.register("title")}
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.title?.message ?? ""}
+              </p>
+          </div>
+
+          <div>
+              <label className="block text-sm font-medium text-gray-700">
+              other completed
+              </label>
+              <input
+                    {...methods.register("completed")}
+                    type="checkbox"
+                    className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <p className="mt-1 text-red-600 text-sm">
+                {methods.formState.errors.completed?.message ?? ""}
+              </p>
+          </div>
+      </div>
         )}
 
         <div>
@@ -154,6 +269,7 @@ export default function MultiStepForm() {
           </button>
         </div>
       </form>
+     </div> 
     </FormProvider>
   );
 }
