@@ -81,7 +81,7 @@ export default function MultiStepForm() {
       <div className="max-w-6xl mx-auto py-8 px-10 bg-gray-100 rounded-lg shadow-lg">
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
         <h2>{formSteps[step]}</h2>
-        {isLoading && <label>Loading...</label>}
+        <label>  {isLoading && <>Loading..</>}.</label>
 
         {/* Step-specific form fields */}
         {step === 0 && (

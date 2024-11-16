@@ -24,8 +24,8 @@ export default async function ProductDetailsPage({ params }: ProductDetailsPageP
   }
   return (
     <div className="max-w-6xl mx-auto py-8 px-10">
-      <h1>product details, please applay for this product</h1>
-      <h1>Product ID is {productId} of category's {categoryId}</h1>
+      <h1 className="text-center text-xl">product details, please applay for this product</h1>
+      <h1 className="text-center text-xl">Product ID is {productId} of category's {categoryId}</h1>
       <MultiStepForm />
     </div>
   );

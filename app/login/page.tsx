@@ -28,7 +28,9 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto py-8 px-10 bg-gray-100 rounded-lg shadow-lg">
+    <div className="max-w-6xl mx-auto py-16 px-10">
+
+    <div className="max-w-6xl mx-auto py-16 px-10 bg-gray-100 rounded-lg shadow-lg">
       <h1>Login</h1>
       <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-4">
@@ -72,6 +74,7 @@ export default function LoginPage() {
                <button type="submit">Login</button>
         </div>
       </form>
+    </div>
     </div>
   );
 }
