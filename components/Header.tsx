@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { isLogin, logoutUser } from "@/actions/loginAction";
 import Image from "next/image";
@@ -13,6 +13,8 @@ import { LogIn, LogOut, User } from 'lucide-react';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track login status
+
 
   const router = useRouter();
   // const islogincheck=isLogin()
@@ -22,10 +24,19 @@ export default function Header() {
   const handleLogout = async () => {
     // Call the logout server action
     await logoutUser();
-
+    setIsAuthenticated(false); // Update state
     // Redirect to the login page
     router.push("/login");
   };
+
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      const loggedIn = await isLogin(); // Fetch login status (e.g., check cookies or session)
+      setIsAuthenticated(loggedIn);
+    };
+    checkLoginStatus();
+  }, []);
 
   return (
     <header className="bg-slate-50 bg-opacity-10 text-gray-800 border-b border-gray-300">
@@ -48,9 +59,9 @@ export default function Header() {
           <Link href="/profile">
               <User size={20} className="mr-2" /> 
           </Link>
-          {true && <Link href="/login"><LogIn size={20} className="mr-2 text-green-800" /></Link>}
+          {isAuthenticated ? (<LogOut size={20} onClick={handleLogout} className="mr-2 text-red-800" />) : (<Link href="/login"><LogIn size={20} className="mr-2 text-green-800" /></Link>) }
           
-          <LogOut size={20} onClick={handleLogout} className="mr-2 text-red-800" />
+          
           
         </div>
         <button
