@@ -32,3 +32,12 @@ export async function logoutUser() {
   
     return { success: true }; // Optional: Can be used for confirmation
   }
+
+
+  export async function isLogin() {
+    const authToken = cookies().get("authToken");
+    if (!authToken) {
+      return false; // User is not authenticated
+    }
+    return true;
+  }

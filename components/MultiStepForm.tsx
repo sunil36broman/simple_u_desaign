@@ -78,7 +78,7 @@ export default function MultiStepForm() {
 
   return (
     <FormProvider {...methods}>
-      <div className="max-w-6xl mx-auto py-8 px-10 bg-gray-100 rounded-lg shadow-lg">
+      <div className="max-w-6xl mx-auto py-8 px-10 bg-slate-50 rounded-lg shadow-lg">
       <form onSubmit={methods.handleSubmit(onSubmit)} className="space-y-6">
         <h2>{formSteps[step]}</h2>
         <label>  {isLoading && <>Loading..</>}.</label>
@@ -258,7 +258,52 @@ export default function MultiStepForm() {
       </div>
         )}
 
-        <div>
+
+<div className="flex justify-between mt-6">
+ 
+
+{step > 0 && (
+  <button
+    type="button"
+    onClick={handlePrevious}
+    className="flex items-center bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5 mr-2"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+    </svg>
+    Previous
+  </button>
+   )}
+
+
+  <button
+    type="submit"
+    disabled={isLoading}
+    className="flex items-center bg-red-900 text-white py-2 px-4 rounded hover:bg-red-800 focus:outline-none focus:ring-2 focus:ring-red-950"
+  >
+     {step === formSteps.length - 1 ? "Submit" : "Next"}
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="h-5 w-5 ml-2"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </button>
+</div>
+
+
+        {/* <div>
           {step > 0 && (
             <button type="button" onClick={handlePrevious}>
               Previous
@@ -267,7 +312,7 @@ export default function MultiStepForm() {
           <button type="submit" disabled={isLoading}>
             {step === formSteps.length - 1 ? "Submit" : "Next"}
           </button>
-        </div>
+        </div> */}
       </form>
      </div> 
     </FormProvider>

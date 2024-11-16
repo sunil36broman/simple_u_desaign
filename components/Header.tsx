@@ -2,12 +2,22 @@
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { logoutUser } from "@/actions/loginAction";
+import { isLogin, logoutUser } from "@/actions/loginAction";
+import Image from "next/image";
+import Logo from '../app/logo-ucb.svg'
+
+
+import { LogIn, LogOut, User } from 'lucide-react';
+
+
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const router = useRouter();
+  // const islogincheck=isLogin()
+
+  // console.log("----header----", islogincheck)
 
   const handleLogout = async () => {
     // Call the logout server action
@@ -18,12 +28,12 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-gray-800 text-white">
+    <header className="bg-slate-50 bg-opacity-10 text-gray-800 border-b border-gray-300">
       <div className="container mx-auto flex items-center justify-between px-4 py-4">
         <div className="text-2xl font-bold">
-          <Link href="/">MyBrand</Link>
+          <Link href="/"><Image src={Logo} alt="Logo" width={100} height={50} /></Link>
         </div>
-        <nav className="hidden md:flex space-x-6">
+        {/* <nav className="hidden md:flex space-x-6">
           <Link href="/categories" className="hover:text-gray-300">
             Categories
           </Link>
@@ -33,21 +43,15 @@ export default function Header() {
           <Link href="/contact" className="hover:text-gray-300">
             Contact
           </Link>
-        </nav>
+        </nav> */}
         <div className="hidden md:flex space-x-4">
-          <Link
-            href="/login"
-            className="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded text-white"
-          >
-            Login
+          <Link href="/profile">
+              <User size={20} className="mr-2" /> 
           </Link>
-          <button
-            // href="/signup"
-            onClick={handleLogout}
-            className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
-          >
-            Logout
-          </button>
+          {true && <Link href="/login"><LogIn size={20} className="mr-2 text-green-800" /></Link>}
+          
+          <LogOut size={20} onClick={handleLogout} className="mr-2 text-red-800" />
+          
         </div>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}

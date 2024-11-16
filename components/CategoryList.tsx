@@ -11,29 +11,20 @@ interface CategoryListProps {
 export default function CategoryList({ categories }: CategoryListProps) {
   return (
     <>
-
-
-            {categories.map((category) => (
-
-<Link href={`/categories/${category.id}`} key={category.id}>
-              <div
-              
+        {categories.map((category) => (
+          <Link href={`/categories/${category.id}`} key={category.id}>
+            <div
               className="bg-white rounded-lg shadow-md overflow-hidden transform transition duration-300 hover:scale-105"
             >
-              <div className="relative w-full h-40">
-              <ShoppingBag className="h-6 w-6 text-blue-600" />
+              <div className="flex items-center justify-center w-full h-40 bg-slate-50">
+              <ShoppingBag className="h-6 w-6 text-red-900" />
               </div>
-              <div className="p-4">
-                <h3 className="text-lg font-bold">{category.title}</h3>
-              
+              <div className="p-4 items-center justify-center w-full h-20">
+                <p className="text-lg">{category.title}</p>
               </div>
             </div>
-            </Link>
-            ))}
-
-
-        
-
+          </Link>
+        ))}
     </>
   );
 }
